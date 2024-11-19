@@ -8,14 +8,23 @@ const router = createRouter({
       path: '/',
       name: 'layout',
       component: Layout,
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      children: [
+        {
+          path: '/dashboard',
+          name: '首页',
+          component: () => import('../views/dashboard.vue'),
+        },
+        {
+          path: '/sql',
+          name: 'SQL 控制台',
+          component: () => import('../views/sql/index.vue'),
+        },
+        {
+          path: '/table/create',
+          name: '创建表',
+          component: () => import('../views/table/create.vue'),
+        },
+      ],
     },
   ],
 })
